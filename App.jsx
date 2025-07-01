@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, Button } from 'react-native'
 
 const users = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1,
@@ -9,16 +9,19 @@ const users = Array.from({ length: 30 }, (_, i) => ({
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        {users.map(user => (
-          <View key={user.id} style={styles.card}>
-            <Image source={{ uri: user.image }} style={styles.profileImage} />
-            <Text style={styles.cardTitle}>{user.name}</Text>
-          </View>
-        ))}
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      <Button title='new Btn' />
+      <SafeAreaView style={styles.container}>
+        <ScrollView  contentContainerStyle={styles.scrollContent}>
+          {users.map(user => (
+            <View key={user.id} style={styles.card}>
+              <Image source={{ uri: user.image }} style={styles.profileImage} />
+              <Text style={styles.cardTitle}>{user.name}</Text>
+            </View>
+          ))}
+        </ScrollView>
+      </SafeAreaView>
+    </>
   )
 }
 
@@ -49,6 +52,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
     width: '30%',
+    maxHeight: 150,
+    maxWidth: 150,
     alignItems: 'center',
   },
   profileImage: {
