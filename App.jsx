@@ -21,7 +21,6 @@ const App = () => {
         renderItem={({ item }) => (
           <View style={styles.card}>
             <Image source={{ uri: item.image }} style={styles.profileImage} />
-            <Text style={styles.cardTitle}>{item.name}</Text>
           </View>
         )}
         showsHorizontalScrollIndicator={false}
@@ -91,9 +90,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     height: 120,
   },
+    profileImage: {
+    width: 94,
+    height: 94,
+    borderRadius: 50,
+  },
   card: {
     backgroundColor: '#fff',
-    padding: 16,
+    padding: 3,
     marginVertical: 8,
     marginHorizontal: 4,
     elevation: 4,
@@ -102,19 +106,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
     width: 100,
+    height: 100,
     borderRadius: 50,
     alignItems: 'center',
   },
-  profileImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 32,
-    marginBottom: 6,
-  },
+
   cardTitle: {
     fontSize: 14,
-    fontWeight: 'bold',
-    marginVertical: 8,
     textAlign: 'center',
     color: 'black'
   },
