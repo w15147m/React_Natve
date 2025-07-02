@@ -1,34 +1,36 @@
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TextInput, Button, TouchableOpacity, FlatList } from 'react-native';
-const users = Array.from({ length: 30 }, (_, i) => ({
-  id: i + 1,
-  name: `User ${i + 1}`,
-  image: `https://randomuser.me/api/portraits/men/${i % 100}.jpg`,
-}));
+import React, { useState } from 'react';
+import { StyleSheet, Text,  SafeAreaView,  TextInput, TouchableOpacity } from 'react-native';
 
-const AppPort = () => {
 
+const InputText = () => {
+  const [text, setText] = useState('');
+  const [buttonText, setButtonText] = useState('');
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={users}
-        keyExtractor={item => item.id.toString()}
-        horizontal
-        contentContainerStyle={styles.scrollContent}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={{ uri: item.image }} style={styles.profileImage} />
-          </View>
-        )}
-        showsHorizontalScrollIndicator={false}
-      />
-
-    
+        <TextInput
+          value={text}
+          onChangeText={setText}
+          placeholder="Enter your text"
+          style={styles.textInput}
+          placeholderTextColor="#888"
+          keyboardType="numeric"
+        />
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => {
+            setButtonText(text);
+            setText('');
+          }}
+        >
+          <Text style={styles.buttonText}>Show Button Text</Text>
+        </TouchableOpacity>
+        <Text style={styles.cardTitle}>{buttonText}</Text>
     </SafeAreaView>
   );
 };
 
-export default AppPort;
+export default InputText;
 
 const styles = StyleSheet.create({
 
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   container: {
+    width: '100%',
     backgroundColor: '#f2f2f2',
     flex: 1,
     justifyContent: 'center',
