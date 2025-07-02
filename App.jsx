@@ -29,11 +29,15 @@ const App = () => {
           placeholder="Enter your text"
           style={styles.textInput}
           placeholderTextColor="#888"
+            keyboardType="numeric"
         />
 
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => setButtonText(text)} // or any function
+          onPress={() => {
+            setButtonText(text);
+            setText('');
+          }} // or any function
         >
           <Text style={styles.buttonText}>Show Button Text</Text>
         </TouchableOpacity>
