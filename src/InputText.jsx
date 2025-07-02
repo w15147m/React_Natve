@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text,  SafeAreaView,  TextInput, TouchableOpacity } from 'react-native';
-
-
 const InputText = () => {
   const [text, setText] = useState('');
   const [buttonText, setButtonText] = useState('');
-
   return (
     <SafeAreaView style={styles.container}>
         <TextInput
