@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image, TextInput, Button, TouchableOpacity, FlatList } from 'react-native';
 
 const users = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1,
@@ -13,14 +13,19 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView horizontal={true} contentContainerStyle={styles.scrollContent}>
-        {users.map(user => (
-          <View key={user.id} style={styles.card}>
-            <Image source={{ uri: user.image }} style={styles.profileImage} />
-            <Text style={styles.cardTitle}>{user.name}</Text>
+      <FlatList
+        data={users}
+        keyExtractor={item => item.id.toString()}
+        horizontal
+        contentContainerStyle={styles.scrollContent}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={{ uri: item.image }} style={styles.profileImage} />
+            <Text style={styles.cardTitle}>{item.name}</Text>
           </View>
-        ))}
-      </ScrollView>
+        )}
+        showsHorizontalScrollIndicator={false}
+      />
 
       <View style={styles.bodyContainer}>
         <TextInput
@@ -29,7 +34,7 @@ const App = () => {
           placeholder="Enter your text"
           style={styles.textInput}
           placeholderTextColor="#888"
-            keyboardType="numeric"
+          keyboardType="numeric"
         />
 
         <TouchableOpacity
@@ -37,7 +42,7 @@ const App = () => {
           onPress={() => {
             setButtonText(text);
             setText('');
-          }} // or any function
+          }}
         >
           <Text style={styles.buttonText}>Show Button Text</Text>
         </TouchableOpacity>
