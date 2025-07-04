@@ -22,7 +22,6 @@ const AppPort = () => {
         )}
         showsHorizontalScrollIndicator={false}
       />
-
     
     </SafeAreaView>
   );
